@@ -8,21 +8,21 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import com.example.tmsapp2.model.HeroFactResponse
+import com.example.tmsapp2.model.Hero
 
 @Composable
-fun HeroItemCard(hero: HeroFactResponse) {
+fun HeroItemCard(hero: Hero) {
     Column(
         horizontalAlignment = Alignment.CenterHorizontally,
         modifier = Modifier
             .padding(8.dp)
             .background(Color.Magenta)
+            //.clickable(onClick = onClick)
 
     ) {
         Text(text = hero.name)
-        Text(text = hero._id.toString())
+
     }
 }
 

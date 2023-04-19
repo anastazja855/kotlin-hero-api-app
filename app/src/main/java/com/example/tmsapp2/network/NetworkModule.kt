@@ -22,17 +22,19 @@ object NetworkModule {
         level = HttpLoggingInterceptor.Level.BODY
     }
 
-    var httpClient = OkHttpClient.Builder().apply {
+    private val httpClient = OkHttpClient.Builder().
         addInterceptor(logging)
-    }
+        .build()
 
 
-    @Singleton
+
+
     @Provides
+    @Singleton
     fun provideRetrofitService(): HeroFactAPI = Retrofit.Builder()
         .baseUrl(BASE_URL)
         .addConverterFactory(MoshiConverterFactory.create(moshi))
-        .client(httpClient.build())
+        .client(httpClient)
         .build()
         .create(HeroFactAPI::class.java)
 
